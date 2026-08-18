@@ -517,33 +517,113 @@ body {
   margin-bottom: 6px;
 }
 
-/* PRECIO DESTACADO bajo el nombre */
-.card-precio-destacado {
+/* PRECIO CENTRADO 10ML EN TARJETAS */
+.card-precio-10ml {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gris-fondo) 0%, rgba(184, 146, 74, 0.08) 100%);
+  border: 1px solid rgba(184, 146, 74, 0.25);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0 16px;
+  text-align: center;
+  transition: var(--transicion);
 }
 
-.precio-destacado-desde {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 1px;
+.card:hover .card-precio-10ml {
+  border-color: var(--dorado);
+  background: linear-gradient(135deg, rgba(184, 146, 74, 0.12) 0%, rgba(184, 146, 74, 0.04) 100%);
+  box-shadow: 0 4px 14px rgba(184, 146, 74, 0.15);
+}
+
+.precio-10ml-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--gris-medio);
+  color: var(--dorado);
+  margin-bottom: 4px;
 }
 
-.precio-destacado-valor {
+.precio-10ml-val {
   font-family: var(--fuente-display);
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--negro);
   line-height: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
 }
 
-.precio-destacado-moneda {
+.precio-10ml-val .monto {
+  font-weight: 600;
+}
+
+.precio-10ml-val .moneda {
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
+  color: var(--dorado);
+}
+
+/* MULTI-PRECIO (5ML & 10ML) EN TARJETAS */
+.card-precios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.card-precio-item-multi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gris-fondo) 0%, rgba(184, 146, 74, 0.08) 100%);
+  border: 1px solid rgba(184, 146, 74, 0.25);
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+  transition: var(--transicion);
+}
+
+.card:hover .card-precio-item-multi {
+  border-color: var(--dorado);
+  background: linear-gradient(135deg, rgba(184, 146, 74, 0.12) 0%, rgba(184, 146, 74, 0.04) 100%);
+  box-shadow: 0 2px 8px rgba(184, 146, 74, 0.12);
+}
+
+.precio-tag-multi {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 3px;
+}
+
+.precio-val-multi {
+  font-family: var(--fuente-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--negro);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 3px;
+}
+
+.precio-val-multi .monto {
+  font-weight: 600;
+}
+
+.precio-val-multi .moneda {
+  font-size: 11px;
+  font-weight: 500;
   color: var(--dorado);
 }
 
@@ -593,46 +673,6 @@ body {
   fill: none;
   stroke: var(--dorado);
   stroke-width: 2;
-}
-
-/* Precios ml */
-.card-precios-ml {
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--gris-borde);
-}
-
-.precio-ml-item {
-  flex: 1;
-  text-align: center;
-  background: var(--gris-fondo);
-  border-radius: 8px;
-  padding: 10px 8px;
-}
-
-.precio-ml-size {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--gris-medio);
-  margin-bottom: 4px;
-}
-
-.precio-ml-val {
-  font-family: var(--fuente-display);
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--negro);
-  line-height: 1;
-}
-
-.precio-ml-val span {
-  font-size: 11px;
-  color: var(--dorado);
-  font-weight: 400;
 }
 
 /* ===== BOTÓN WHATSAPP TARJETA ===== */
@@ -758,26 +798,26 @@ body {
   margin-bottom: 28px;
 }
 
-.oferta-precios {
+.oferta-precio-10ml-box {
   display: flex;
-  gap: 12px;
   margin-bottom: 28px;
 }
 
-.oferta-precio-item {
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 8px;
-  padding: 14px 20px;
+.oferta-precio-10ml-box .oferta-precio-item {
+  border: 1px solid rgba(184, 146, 74, 0.4);
+  border-radius: 10px;
+  padding: 14px 28px;
   text-align: center;
-  background: rgba(255,255,255,0.04);
+  background: rgba(184, 146, 74, 0.08);
 }
 
 .oferta-precio-ml {
   font-size: 9px;
   letter-spacing: 2px;
-  color: rgba(255,255,255,0.4);
+  color: var(--dorado-claro);
   text-transform: uppercase;
   margin-bottom: 6px;
+  font-weight: 700;
 }
 
 .oferta-precio-valor {
@@ -788,6 +828,44 @@ body {
 }
 
 .oferta-precio-valor span { font-size: 14px; color: var(--dorado-claro); }
+
+.oferta-precio-tachado {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.4);
+  margin-right: 8px;
+  font-family: var(--fuente-cuerpo);
+  font-weight: 400;
+}
+
+.oferta-incluye-lista {
+  margin: 16px 0 20px;
+}
+
+.oferta-incluye-titulo {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.oferta-incluye-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip-decant {
+  background: rgba(184, 146, 74, 0.15);
+  border: 1px solid rgba(184, 146, 74, 0.35);
+  color: var(--dorado-claro);
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 14px;
+}
 
 .oferta-imagen-wrap {
   height: 100%;
@@ -810,6 +888,110 @@ body {
 }
 
 .oferta-imagen-wrap:hover img { transform: scale(1.06); }
+
+/* ===== GRID DE COMBOS & OFERTAS ===== */
+.seccion-subtitulo-block {
+  padding: 48px 32px 16px;
+}
+
+.subseccion-titulo {
+  font-family: var(--fuente-display);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 500;
+  color: var(--negro);
+  letter-spacing: -0.5px;
+}
+
+.combos-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card-combo {
+  position: relative;
+}
+
+.combo-tag-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--negro);
+  color: var(--dorado-claro);
+  border: 1px solid rgba(184, 146, 74, 0.4);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-imagen-combo {
+  height: 220px;
+  background: var(--gris-fondo);
+}
+
+.card-imagen-combo img {
+  padding: 16px;
+  object-fit: contain;
+}
+
+.combo-desc-corta {
+  font-size: 12px;
+  color: var(--gris-medio);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.combo-incluye-wrap {
+  background: var(--gris-fondo);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.combo-incluye-titulo {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 6px;
+}
+
+.combo-incluye-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.combo-chip {
+  font-size: 9.5px;
+  color: var(--gris-oscuro);
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.combo-precio-original {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: var(--gris-medio);
+  margin-right: 6px;
+  font-family: var(--fuente-cuerpo);
+  font-weight: 400;
+}
+
+.modal-precio-tachado {
+  font-size: 15px;
+  text-decoration: line-through;
+  color: var(--gris-medio);
+  margin-right: 8px;
+  font-weight: 400;
+}
 
 /* ===== PERFUME DESTACADO ===== */
 .destacado-perfume {
@@ -890,34 +1072,39 @@ body {
   color: var(--dorado);
 }
 
-/* Precio destacado */
-.destacado-precio-highlight {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin: 20px 0;
+/* Precio destacado 10ml */
+.destacado-precio-10ml-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--gris-fondo);
+  border: 1px solid rgba(184, 146, 74, 0.3);
+  border-radius: 10px;
+  padding: 14px 24px;
+  margin: 16px 0 20px;
 }
 
-.destacado-precio-desde {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
+.destacado-10ml-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--gris-medio);
+  color: var(--dorado);
+  margin-bottom: 4px;
 }
 
-.destacado-precio-num {
+.destacado-10ml-val {
   font-family: var(--fuente-display);
-  font-size: 36px;
-  font-weight: 500;
+  font-size: 32px;
+  font-weight: 600;
   color: var(--negro);
   line-height: 1;
 }
 
-.destacado-precio-mon {
+.destacado-10ml-val small {
   font-size: 14px;
+  font-weight: 500;
   color: var(--dorado);
-  font-weight: 400;
 }
 
 .destacado-sep {
@@ -935,34 +1122,6 @@ body {
 }
 
 .destacado-item strong { color: var(--negro); font-weight: 600; }
-
-.destacado-precios {
-  display: flex;
-  gap: 10px;
-  margin: 20px 0 24px;
-}
-
-.destacado-precio {
-  border: 1px solid var(--gris-borde);
-  border-radius: 8px;
-  padding: 12px 16px;
-  text-align: center;
-  background: var(--gris-fondo);
-}
-
-.destacado-precio .ml {
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--gris-medio);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.destacado-precio .bs {
-  font-family: var(--fuente-display);
-  font-size: 24px;
-  color: var(--negro);
-}
 
 /* ===== FOOTER ===== */
 footer {
@@ -1132,11 +1291,59 @@ footer {
   /* Ocultar detalles secundarios en móvil */
   .catalogo-grid .card .card-detalles,
   .catalogo-grid .card .card-duracion,
-  .catalogo-grid .card .card-precios-ml,
   .catalogo-grid .card .btn-whatsapp,
-  .catalogo-grid .card .card-precio-destacado,
-  .catalogo-grid .card .card-divider {
+  .catalogo-grid .card .card-divider,
+  .catalogo-grid .card .combo-desc-corta,
+  .catalogo-grid .card .combo-incluye-wrap {
     display: none !important;
+  }
+
+  .seccion-subtitulo-block {
+    padding: 32px 16px 12px;
+  }
+
+  .catalogo-grid .card .card-precio-10ml {
+    margin: 8px 0 0;
+    padding: 8px 10px;
+    border-radius: 6px;
+  }
+
+  .catalogo-grid .card .precio-10ml-tag {
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .catalogo-grid .card .precio-10ml-val {
+    font-size: 20px;
+  }
+
+  .catalogo-grid .card .precio-10ml-val .moneda {
+    font-size: 11px;
+  }
+
+  .catalogo-grid .card .card-precios-grid {
+    margin: 8px 0 0;
+    gap: 4px;
+  }
+
+  .catalogo-grid .card .card-precio-item-multi {
+    padding: 6px 4px;
+    border-radius: 6px;
+  }
+
+  .catalogo-grid .card .precio-tag-multi {
+    font-size: 7.5px;
+    letter-spacing: 0.5px;
+    margin-bottom: 1px;
+  }
+
+  .catalogo-grid .card .precio-val-multi {
+    font-size: 15px;
+  }
+
+  .catalogo-grid .card .precio-val-multi .moneda {
+    font-size: 9.5px;
   }
 
   .oferta-semana { margin: 32px 16px; }
@@ -1167,9 +1374,10 @@ footer {
 
 @media (max-width: 480px) {
   .testimonios-grid { grid-template-columns: 1fr; }
-  .stats-bar { display: grid; grid-template-columns: 1fr 1fr; }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 16px; }
-  .stat-item:last-child { grid-column: 1/-1; border-bottom: none; }
+  .stats-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .stat-item { border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 16px; }
+  .stat-item:nth-child(2n) { border-right: none; }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
 }
 
 /* ===== SKELETON LOADERS ===== */
@@ -1373,56 +1581,83 @@ footer {
   font-weight: 500;
 }
 
-.modal-precio-destacado {
+.modal-precio-10ml-box {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  background: var(--gris-fondo);
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-.modal-precio-destacado-label {
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: var(--gris-oscuro);
-}
-
-.modal-precio-destacado-val {
-  font-family: var(--fuente-display);
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--negro);
-}
-
-.modal-precios-ml-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.modal-precios-ml-card {
-  border: 1px solid var(--gris-borde);
-  border-radius: 8px;
-  padding: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(184, 146, 74, 0.1) 0%, rgba(0,0,0,0.02) 100%);
+  border: 1px solid var(--dorado);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 16px 0 20px;
   text-align: center;
-  background: var(--blanco);
 }
 
-.modal-precios-ml-card-size {
-  font-size: 11px;
-  color: var(--gris-medio);
+.modal-precio-10ml-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dorado);
   margin-bottom: 4px;
 }
 
-.modal-precios-ml-card-val {
+.modal-precio-10ml-val {
   font-family: var(--fuente-display);
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 600;
+  color: var(--negro);
+  line-height: 1;
+}
+
+.modal-precio-10ml-val small {
+  font-size: 14px;
   color: var(--dorado);
+  font-weight: 500;
+}
+
+/* MULTI-PRECIO EN MODAL */
+.modal-precios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+
+.modal-precio-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(184, 146, 74, 0.1) 0%, rgba(0,0,0,0.02) 100%);
+  border: 1px solid var(--dorado);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.modal-precio-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 4px;
+}
+
+.modal-precio-val {
+  font-family: var(--fuente-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--negro);
+  line-height: 1;
+}
+
+.modal-precio-val small {
+  font-size: 12px;
+  color: var(--dorado);
+  font-weight: 500;
 }
 
 /* Botón flotante para WhatsApp en el Modal */

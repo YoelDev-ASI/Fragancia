@@ -87,7 +87,7 @@ function renderAllSections() {
     // Buscar destacado del mes
     const destacado = data.damas.find(p => p.esDestacado);
     if (destacado) {
-      const waText = encodeURIComponent(`Hola, estoy interesado en el perfume ${destacado.marca} ${destacado.nombre}`);
+      const waText = encodeURIComponent(`Hola, estoy interesado en el decant de 10ml de ${destacado.marca} ${destacado.nombre}`);
       const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
       
       damasHTML += `
@@ -103,29 +103,23 @@ function renderAllSections() {
                 ${destacado.marca}
                 <em>${destacado.nombre}</em>
               </h2>
-              <div class="destacado-precio-highlight">
-                <span class="destacado-precio-desde">Desde</span>
-                <span class="destacado-precio-num">${destacado.precioDesde}</span>
-                <span class="destacado-precio-mon">Bs</span>
+              
+              <div class="destacado-precio-10ml-box">
+                <span class="destacado-10ml-tag">DECANT 10 ML</span>
+                <div class="destacado-10ml-val">
+                  ${destacado.precioDesde} <small>Bs</small>
+                </div>
               </div>
+
               <div class="destacado-sep"></div>
               <p class="destacado-item"><strong>Notas:</strong> ${destacado.notas}</p>
               <p class="destacado-item"><strong>Sensación:</strong> ${destacado.sensacion}</p>
               <p class="destacado-item"><strong>Ocasiones:</strong> ${destacado.ocasiones}</p>
               <p class="destacado-item"><strong>Duración:</strong> ${destacado.duracion}</p>
               
-              <div class="destacado-precios">
-                ${destacado.precios.map(p => `
-                  <div class="destacado-precio">
-                    <p class="ml">${p.size.toUpperCase()}</p>
-                    <p class="bs">${p.valor} <small style="font-size:13px;color:var(--dorado)">Bs</small></p>
-                  </div>
-                `).join('')}
-              </div>
-              
-              <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener" style="max-width:200px">
+              <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener" style="max-width:220px; margin-top:24px;">
                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.115 1.535 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.725-1.5A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.157-1.42l-.369-.218-3.4.892.907-3.312-.24-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-                Quiero Este
+                Pedir 10ml por WhatsApp
               </a>
             </div>
           </div>
@@ -137,8 +131,11 @@ function renderAllSections() {
     const otrosDamas = data.damas.filter(p => !p.esDestacado);
     if (otrosDamas.length > 0) {
       damasHTML += `
-        <div class="catalogo-grid">
+        <div class="catalogo-grid" id="catalogo-grid-damas">
           ${otrosDamas.map(createCardHTML).join("")}
+          <div class="no-resultados" id="no-resultados-damas">
+            <p>No se encontraron fragancias para tu búsqueda.</p>
+          </div>
         </div>
       `;
     }
@@ -146,68 +143,140 @@ function renderAllSections() {
     panelDamas.innerHTML = damasHTML;
   }
 
-  // Renderizar catálogo de Ofertas (YSL MYSLF EDP destacado + posibles otros)
+  // Renderizar catálogo de Ofertas (Combos & Promociones Especiales)
   const panelOfertas = document.getElementById("panel-ofertas");
   if (panelOfertas) {
     let ofertasHTML = `
       <div class="seccion-header">
         <div class="seccion-header-left">
-          <p class="seccion-etiqueta">Promociones Especiales</p>
-          <h2 class="seccion-titulo">Ofertas <em>de la Semana</em></h2>
+          <p class="seccion-etiqueta">Packs Especiales & Promociones</p>
+          <h2 class="seccion-titulo">Combos <em>& Ofertas Exclusivas</em></h2>
         </div>
-        <span class="seccion-conteo">${data.ofertas.length} oferta${data.ofertas.length !== 1 ? 's' : ''} activa${data.ofertas.length !== 1 ? 's' : ''}</span>
+        <span class="seccion-conteo">${data.ofertas.length} combos & ofertas activas</span>
       </div>
       <div class="separador"></div>
     `;
 
-    data.ofertas.forEach(oferta => {
-      const waText = encodeURIComponent(`Hola, estoy interesado en la oferta de ${oferta.marca} ${oferta.nombre}`);
+    // Hero Offer Banner (Combo Pa' Los Manes)
+    const heroOferta = data.ofertas.find(o => o.id === "combo-pa-los-manes") || data.ofertas[0];
+    if (heroOferta) {
+      const waText = encodeURIComponent(`Hola, estoy interesado en el ${heroOferta.nombre}`);
       const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
+
+      const incluyeHeroHTML = heroOferta.incluye ? `
+        <div class="oferta-incluye-lista">
+          <p class="oferta-incluye-titulo">Fragancias incluidas:</p>
+          <div class="oferta-incluye-chips">
+            ${heroOferta.incluye.map(item => `<span class="chip-decant">✦ ${item}</span>`).join('')}
+          </div>
+        </div>
+      ` : '';
+
+      const precioOriginalHTML = heroOferta.precioOriginal ? `<span class="oferta-precio-tachado">Bs ${heroOferta.precioOriginal}</span>` : '';
+      const comboSizeHero = heroOferta.precios && heroOferta.precios[0] ? heroOferta.precios[0].size.toUpperCase() : '15 ML';
 
       ofertasHTML += `
         <section class="oferta-semana">
           <div class="oferta-inner">
             <div class="oferta-texto">
-              <p class="oferta-etiqueta">Oferta de la Semana</p>
-              <h2 class="oferta-bajada">${oferta.marca}<br><em>${oferta.nombre}</em></h2>
-              <div class="oferta-tag">${oferta.tag}</div>
-              <p class="oferta-desc">${oferta.desc}</p>
+              <p class="oferta-etiqueta">Combo Estrella del Mes</p>
+              <h2 class="oferta-bajada">${heroOferta.marca}<br><em>${heroOferta.nombre}</em></h2>
+              <div class="oferta-tag">${heroOferta.tag}</div>
+              <p class="oferta-desc">${heroOferta.desc}</p>
               
-              <div class="oferta-precios">
-                ${oferta.precios.map(p => `
-                  <div class="oferta-precio-item">
-                    <p class="oferta-precio-ml">${p.size.toUpperCase()}</p>
-                    <p class="oferta-precio-valor"><span>Bs </span>${p.valor}</p>
-                  </div>
-                `).join('')}
+              ${incluyeHeroHTML}
+              
+              <div class="oferta-precio-10ml-box">
+                <div class="oferta-precio-item">
+                  <p class="oferta-precio-ml">PRECIO COMBO (${comboSizeHero})</p>
+                  <p class="oferta-precio-valor">
+                    ${precioOriginalHTML}
+                    <span>Bs </span>${heroOferta.precioCombo || heroOferta.precios[0].valor}
+                  </p>
+                </div>
               </div>
               
-              <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener" style="max-width:220px">
+              <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener" style="max-width:260px">
                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.115 1.535 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.725-1.5A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.157-1.42l-.369-.218-3.4.892.907-3.312-.24-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-                Aprovechar Oferta
+                Pedir Combo Pa' Los Manes
               </a>
             </div>
             <div class="oferta-imagen-wrap">
-              <img src="${oferta.imagen}" alt="${oferta.nombre}" onerror="this.src='https://fimgs.net/mdimg/perfume/375x500.77898.jpg';this.onerror=null;">
+              <img src="${heroOferta.imagen}" alt="${heroOferta.nombre}" onerror="this.src='https://fimgs.net/mdimg/perfume/375x500.77898.jpg';this.onerror=null;">
             </div>
           </div>
         </section>
       `;
-    });
+    }
+
+    // Grid de todos los Combos y Ofertas
+    const otrosCombos = data.ofertas.filter(o => o.id !== "combo-pa-los-manes");
+    if (otrosCombos.length > 0) {
+      ofertasHTML += `
+        <div class="seccion-subtitulo-block">
+          <h3 class="subseccion-titulo">Más Combos & Ofertas Especiales</h3>
+        </div>
+        <div class="catalogo-grid combos-grid">
+          ${otrosCombos.map(createComboCardHTML).join("")}
+        </div>
+      `;
+    }
 
     panelOfertas.innerHTML = ofertasHTML;
   }
 }
 
-function createCardHTML(perfume) {
-  const preciosHTML = perfume.precios.map(p => `
-    <div class="precio-ml-item">
-      <div class="precio-ml-size">${p.size}</div>
-      <div class="precio-ml-val"><span>Bs </span>${p.valor}</div>
-    </div>
-  `).join("");
+function createComboCardHTML(combo) {
+  const precioActual = combo.precioCombo || (combo.precios && combo.precios[0] ? combo.precios[0].valor : combo.precioDesde);
+  const precioAnteriorHTML = combo.precioOriginal ? `<span class="combo-precio-original">Bs ${combo.precioOriginal}</span>` : '';
+  const comboSizeTag = combo.precios && combo.precios[0] ? `PRECIO COMBO ${combo.precios[0].size.toUpperCase()}` : 'PRECIO COMBO';
+  const waText = encodeURIComponent(`Hola, estoy interesado en comprar el ${combo.nombre}`);
+  const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
 
-  const waText = encodeURIComponent(`Hola, estoy interesado en ${perfume.marca} ${perfume.nombre}`);
+  const incluyeHTML = combo.incluye ? `
+    <div class="combo-incluye-wrap">
+      <p class="combo-incluye-titulo">Fragancias incluidas:</p>
+      <div class="combo-incluye-tags">
+        ${combo.incluye.map(item => `<span class="combo-chip">${item}</span>`).join('')}
+      </div>
+    </div>
+  ` : '';
+
+  return `
+    <div class="card card-combo" data-nombre="${combo.dataNombre}">
+      <div class="card-imagen card-imagen-combo">
+        <span class="combo-tag-badge">${combo.tag}</span>
+        <img src="${combo.imagen}" alt="${combo.nombre}" loading="lazy" onerror="this.classList.add('img-error')">
+        <div class="img-fallback"><span>${combo.nombre}</span></div>
+      </div>
+      <div class="card-info">
+        <span class="card-marca">${combo.marca}</span>
+        <h3 class="card-nombre">${combo.nombre}</h3>
+        <p class="combo-desc-corta">${combo.desc}</p>
+
+        ${incluyeHTML}
+
+        <div class="card-precio-10ml card-precio-combo">
+          <span class="precio-10ml-tag">${comboSizeTag}</span>
+          <div class="precio-10ml-val">
+            ${precioAnteriorHTML}
+            <span class="monto">${precioActual}</span>
+            <span class="moneda">Bs</span>
+          </div>
+        </div>
+
+        <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.115 1.535 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.725-1.5A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.157-1.42l-.369-.218-3.4.892.907-3.312-.24-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Pedir Combo por WhatsApp
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+function createCardHTML(perfume) {
+  const precio10ml = perfume.precios && perfume.precios[0] ? perfume.precios[0].valor : perfume.precioDesde;
+  const waText = encodeURIComponent(`Hola, estoy interesado en el decant de 10ml de ${perfume.marca} ${perfume.nombre}`);
   const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
 
   return `
@@ -219,10 +288,15 @@ function createCardHTML(perfume) {
       <div class="card-info">
         <span class="card-marca">${perfume.marca}</span>
         <h3 class="card-nombre">${perfume.nombre}</h3>
-        <div class="card-precio-destacado">
-          <span class="precio-destacado-desde">Desde</span>
-          <span class="precio-destacado-valor"><span class="precio-destacado-moneda">Bs </span>${perfume.precioDesde}</span>
+
+        <div class="card-precio-10ml">
+          <span class="precio-10ml-tag">DECANT 10 ML</span>
+          <div class="precio-10ml-val">
+            <span class="monto">${precio10ml}</span>
+            <span class="moneda">Bs</span>
+          </div>
         </div>
+
         <div class="card-divider"></div>
         <div class="card-detalles">
           <p class="card-detalle"><strong>Notas:</strong> ${perfume.notas}</p>
@@ -233,12 +307,9 @@ function createCardHTML(perfume) {
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           ${perfume.duracion}
         </span>
-        <div class="card-precios-ml">
-          ${preciosHTML}
-        </div>
         <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.115 1.535 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.725-1.5A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.157-1.42l-.369-.218-3.4.892.907-3.312-.24-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Consultar por WhatsApp
+          Pedir 10ml por WhatsApp
         </a>
       </div>
     </div>
@@ -265,12 +336,10 @@ function initTabs() {
       if (targetPanel) targetPanel.classList.add("activo");
 
       // Limpiar buscador si cambiamos de tab
-      if (target !== "varones") {
-        const inputBuscador = document.getElementById("buscador");
-        if (inputBuscador) {
-          inputBuscador.value = "";
-          resetBuscador();
-        }
+      const inputBuscador = document.getElementById("buscador");
+      if (inputBuscador) {
+        inputBuscador.value = "";
+        resetBuscador();
       }
 
       // Scroll suave al catálogo
@@ -284,39 +353,24 @@ function initTabs() {
 
 // --- LOGICA DEL BUSCADOR ---
 
-let searchInput, cards, conteoResultados, noResultadosDiv, totalFraganciasCount;
+let searchInput;
 
 function initBuscador() {
   searchInput = document.getElementById("buscador");
-  conteoResultados = document.getElementById("conteo-resultados");
-  noResultadosDiv = document.getElementById("no-resultados-varones");
-  
   if (!searchInput) return;
 
-  // Cachear los cards creados dinámicamente
-  cards = document.querySelectorAll("#catalogo-grid-varones .card");
-  totalFraganciasCount = window.PERFUMES_DATA.varones.length;
-
   searchInput.addEventListener("input", function () {
-    // Si no estamos en la tab de varones, cambiar a ella primero
-    const panelVarones = document.getElementById("panel-varones");
-    if (!panelVarones.classList.contains("activo")) {
-      const tabBtns = document.querySelectorAll(".tab-btn");
-      const tabPanels = document.querySelectorAll(".tab-panel");
-      
-      tabBtns.forEach(b => b.classList.remove("activo"));
-      tabPanels.forEach(p => p.classList.remove("activo"));
-      
-      const tabVaronesBtn = document.querySelector('[data-tab="varones"]');
-      if (tabVaronesBtn) tabVaronesBtn.classList.add("activo");
-      panelVarones.classList.add("activo");
-    }
-
     const q = this.value.toLowerCase().trim();
-    let visibles = 0;
+    const activePanel = document.querySelector(".tab-panel.activo");
+    if (!activePanel) return;
 
-    cards.forEach(card => {
-      const nombre = card.getAttribute("data-nombre").toLowerCase();
+    const cardsInActive = activePanel.querySelectorAll(".card");
+    const conteoEl = activePanel.querySelector(".seccion-conteo");
+    const noResEl = activePanel.querySelector(".no-resultados");
+    
+    let visibles = 0;
+    cardsInActive.forEach(card => {
+      const nombre = (card.getAttribute("data-nombre") || "").toLowerCase();
       if (!q || nombre.includes(q)) {
         card.classList.remove("hidden");
         visibles++;
@@ -325,29 +379,33 @@ function initBuscador() {
       }
     });
 
-    if (conteoResultados) {
-      conteoResultados.textContent = q 
+    if (conteoEl) {
+      const totalCount = cardsInActive.length;
+      conteoEl.textContent = q 
         ? `${visibles} resultado${visibles !== 1 ? "s" : ""}` 
-        : `${totalFraganciasCount} fragancias`;
+        : `${totalCount} fragancia${totalCount !== 1 ? "s" : ""}`;
     }
 
-    if (noResultadosDiv) {
-      noResultadosDiv.classList.toggle("visible", visibles === 0);
+    if (noResEl) {
+      noResEl.classList.toggle("visible", visibles === 0 && cardsInActive.length > 0);
     }
   });
 }
 
 function resetBuscador() {
-  if (!cards) cards = document.querySelectorAll("#catalogo-grid-varones .card");
+  const cardsAll = document.querySelectorAll(".tab-panel .card");
+  cardsAll.forEach(card => card.classList.remove("hidden"));
   
-  cards.forEach(card => card.classList.remove("hidden"));
-  
-  if (conteoResultados) {
-    conteoResultados.textContent = `${totalFraganciasCount} fragancias`;
-  }
-  
-  if (noResultadosDiv) {
-    noResultadosDiv.classList.remove("visible");
+  const noResultadosAll = document.querySelectorAll(".no-resultados");
+  noResultadosAll.forEach(nr => nr.classList.remove("visible"));
+
+  const activePanel = document.querySelector(".tab-panel.activo");
+  if (activePanel) {
+    const conteoEl = activePanel.querySelector(".seccion-conteo");
+    const cardsInActive = activePanel.querySelectorAll(".card");
+    if (conteoEl && cardsInActive.length > 0) {
+      conteoEl.textContent = `${cardsInActive.length} fragancia${cardsInActive.length !== 1 ? "s" : ""}`;
+    }
   }
 }
 
@@ -406,20 +464,35 @@ function openDetailModal(perfume) {
   const modalContenido = document.getElementById("modal-detalle-contenido");
   if (!modal || !modalContenido) return;
 
-  const preciosHTML = perfume.precios ? perfume.precios.map(p => `
-    <div class="modal-precios-ml-card">
-      <div class="modal-precios-ml-card-size">${p.size}</div>
-      <div class="modal-precios-ml-card-val">Bs ${p.valor}</div>
+  const precioActual = perfume.precioCombo || (perfume.precios && perfume.precios[0] ? perfume.precios[0].valor : perfume.precioDesde);
+  const precioAnteriorHTML = perfume.precioOriginal ? `<span class="modal-precio-tachado">Bs ${perfume.precioOriginal}</span>` : '';
+  const modalPreciosHTML = `
+    <div class="modal-precio-10ml-box">
+      <span class="modal-precio-10ml-label">${perfume.incluye ? "PRECIO COMBO PROMO" : "PRESENTACIÓN 10 ML"}</span>
+      <div class="modal-precio-10ml-val">
+        ${precioAnteriorHTML}
+        ${precioActual} <small>Bs</small>
+      </div>
     </div>
-  `).join("") : "";
+  `;
 
-  const waText = encodeURIComponent(`Hola, estoy interesado en el perfume ${perfume.marca} ${perfume.nombre}`);
+  const waText = encodeURIComponent(`Hola, estoy interesado en consultar sobre ${perfume.nombre}`);
   const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
 
-  const notasText = perfume.notas ? perfume.notas : "No especificado";
-  const sensacionText = perfume.sensacion ? perfume.sensacion : "No especificado";
-  const ocasionesText = perfume.ocasiones ? perfume.ocasiones : "No especificado";
-  const duracionText = perfume.duracion ? perfume.duracion : "No especificado";
+  const incluyeModalHTML = perfume.incluye ? `
+    <div class="modal-section-title">Fragancias Incluidas</div>
+    <div class="modal-desc-list">
+      ${perfume.incluye.map(item => `<div class="modal-desc-item">✦ <strong>${item}</strong></div>`).join('')}
+    </div>
+  ` : `
+    <div class="modal-section-title">Detalles de la Fragancia</div>
+    <div class="modal-desc-list">
+      <div class="modal-desc-item"><strong>Notas:</strong> ${perfume.notas || "No especificado"}</div>
+      <div class="modal-desc-item"><strong>Sensación:</strong> ${perfume.sensacion || "No especificado"}</div>
+      <div class="modal-desc-item"><strong>Ocasiones:</strong> ${perfume.ocasiones || "No especificado"}</div>
+      <div class="modal-desc-item"><strong>Duración:</strong> ${perfume.duracion || "No especificado"}</div>
+    </div>
+  `;
 
   modalContenido.innerHTML = `
     <div class="modal-perfume-header">
@@ -430,31 +503,15 @@ function openDetailModal(perfume) {
       <h3 class="modal-perfume-nombre">${perfume.nombre}</h3>
     </div>
 
-    ${perfume.precioDesde ? `
-    <div class="modal-precio-destacado">
-      <span class="modal-precio-destacado-label">Desde</span>
-      <span class="modal-precio-destacado-val">Bs ${perfume.precioDesde}</span>
-    </div>
-    ` : ""}
+    ${modalPreciosHTML}
 
-    <div class="modal-section-title">Detalles de la Fragancia</div>
-    <div class="modal-desc-list">
-      <div class="modal-desc-item"><strong>Notas:</strong> ${notasText}</div>
-      <div class="modal-desc-item"><strong>Sensación:</strong> ${sensacionText}</div>
-      <div class="modal-desc-item"><strong>Ocasiones:</strong> ${ocasionesText}</div>
-      <div class="modal-desc-item"><strong>Duración:</strong> ${duracionText}</div>
-    </div>
+    <p class="modal-desc-texto" style="font-size:12.5px;color:var(--gris-medio);line-height:1.6;margin-bottom:12px;">${perfume.desc || ""}</p>
 
-    ${preciosHTML ? `
-    <div class="modal-section-title">Precios por Tamaño (Decants)</div>
-    <div class="modal-precios-ml-grid">
-      ${preciosHTML}
-    </div>
-    ` : ""}
+    ${incluyeModalHTML}
 
-    <a href="${waUrl}" class="modal-btn-wa" target="_blank" rel="noopener">
+    <a href="${waUrl}" class="modal-btn-wa" target="_blank" rel="noopener" style="margin-top:20px;">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.115 1.535 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.725-1.5A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.157-1.42l-.369-.218-3.4.892.907-3.312-.24-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      Consultar por WhatsApp
+      Pedir por WhatsApp
     </a>
   `;
 
