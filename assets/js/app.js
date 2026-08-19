@@ -245,7 +245,6 @@ function createComboCardHTML(combo) {
   return `
     <div class="card card-combo" data-nombre="${combo.dataNombre}">
       <div class="card-imagen card-imagen-combo">
-        <span class="combo-tag-badge">${combo.tag}</span>
         <img src="${combo.imagen}" alt="${combo.nombre}" loading="lazy" onerror="this.classList.add('img-error')">
         <div class="img-fallback"><span>${combo.nombre}</span></div>
       </div>

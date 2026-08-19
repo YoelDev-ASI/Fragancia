@@ -903,7 +903,10 @@ body {
 }
 
 .combos-grid {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card-combo {
@@ -1240,7 +1243,13 @@ footer {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .oferta-inner { grid-template-columns: 1fr; }
-  .oferta-imagen-wrap { min-height: 260px; border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
+  .oferta-imagen-wrap {
+    order: -1;
+    min-height: 260px;
+    border-left: none;
+    border-top: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
   .destacado-inner { grid-template-columns: 1fr; }
   .destacado-img-wrap { height: 280px; }
   .destacado-texto { padding: 32px; }
