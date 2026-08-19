@@ -377,10 +377,10 @@ window.PERFUMES_DATA = {
     {
       id: "combo-pa-los-manes",
       marca: "Colección Diseñador",
-      nombre: "Combo Pa' Los Manes",
+      nombre: "Combo Pa Los Manes",
       dataNombre: "combo pa los manes diseñador le male elixir scandal intense sauvage edp myslf edp le beau le parfum",
       imagen: "assets/images/ComboPaLosManes.webp",
-      tag: "🔥 Pack TOP Diseñador (15 ml)",
+      tag: "Pack TOP Diseñador (15 ml)",
       desc: "El pack definitivo para el hombre moderno. Incluye fragancias de diseñador reconocidas por su estela y fijación.",
       precioOriginal: null,
       precioCombo: 430,
