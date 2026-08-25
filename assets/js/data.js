@@ -44,7 +44,7 @@ window.PERFUMES_DATA = {
       nombre: "Amber Oud Gold Edition",
       dataNombre: "al haramain amber oud gold edition melón piña vainilla",
       imagen: "assets/images/AmberOudGoldEdition.webp",
-      precioDesde: 115,
+      precioDesde: 110,
       notas: "Melón, piña, vainilla, bergamota y almizcle.",
       sensacion: "Dulce-frutal y jugoso.",
       ocasiones: "Día, tarde y noche.",
@@ -59,13 +59,13 @@ window.PERFUMES_DATA = {
       nombre: "Aqua Dubai",
       dataNombre: "al haramain aqua dubai bergamota mandarina melón ámbar",
       imagen: "assets/images/AquaDubai.webp",
-      precioDesde: 115,
+      precioDesde: 110,
       notas: "Bergamota, mandarina, melón y ámbar.",
       sensacion: "Fresco, limpio y jabonoso.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
-        { size: "10 ml", valor: 115 }
+        { size: "10 ml", valor: 110 }
       ]
     },
     {
@@ -74,13 +74,13 @@ window.PERFUMES_DATA = {
       nombre: "Eros Eau De Toilette",
       dataNombre: "versace eros eau de toilette menta manzana limón",
       imagen: "assets/images/ErosEauDeToilette.webp",
-      precioDesde: 145,
+      precioDesde: 150,
       notas: "Menta, manzana verde, limón, vainilla y cedro.",
       sensacion: "Fresco, masculino y seductor.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
-        { size: "10 ml", valor: 145 }
+        { size: "10 ml", valor: 150 }
       ]
     },
     {
@@ -149,13 +149,13 @@ window.PERFUMES_DATA = {
       nombre: "Le Beau Le Parfum",
       dataNombre: "le beau le parfum jean paul gaultier vainilla coco piña",
       imagen: "assets/images/LeBeauLeParfum.webp",
-      precioDesde: 170,
+      precioDesde: 180,
       notas: "Vainilla, coco, piña y maderas.",
       sensacion: "Dulce, cálido y atractivo.",
       ocasiones: "Salidas casuales.",
       duracion: "8–10 horas",
       precios: [
-        { size: "10 ml", valor: 170 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -164,13 +164,13 @@ window.PERFUMES_DATA = {
       nombre: "Le Male Elixir",
       dataNombre: "le male elixir jean paul gaultier vainilla lavanda",
       imagen: "assets/images/LeMaleElixir.webp",
-      precioDesde: 185,
+      precioDesde: 180,
       notas: "Vainilla, lavanda, menta, miel y tabaco.",
       sensacion: "Sensual, cálida y adictiva.",
       ocasiones: "Salidas nocturnas.",
       duracion: "8–10 horas",
       precios: [
-        { size: "10 ml", valor: 185 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -179,13 +179,13 @@ window.PERFUMES_DATA = {
       nombre: "MYSLF",
       dataNombre: "ysl myslf yves saint laurent bergamota azahar pachuli",
       imagen: "assets/images/MYSLF.webp",
-      precioDesde: 190,
+      precioDesde: 180,
       notas: "Bergamota, azahar y pachuli.",
       sensacion: "Limpio, juvenil y agradable.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
-        { size: "10 ml", valor: 190 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -194,13 +194,13 @@ window.PERFUMES_DATA = {
       nombre: "Odyssey Mandarin Sky",
       dataNombre: "armaf odyssey mandarin sky mandarina naranja azafrán caramelo",
       imagen: "assets/images/OdysseyMandarinSky.webp",
-      precioDesde: 115,
+      precioDesde: 100,
       notas: "Mandarina, naranja, azafrán y caramelo.",
       sensacion: "Caramelo cítrico.",
       ocasiones: "Salidas casuales.",
       duracion: "8 horas",
       precios: [
-        { size: "10 ml", valor: 115 }
+        { size: "10 ml", valor: 100 }
       ]
     },
     {
@@ -209,13 +209,13 @@ window.PERFUMES_DATA = {
       nombre: "Sauvage",
       dataNombre: "dior sauvage bergamota pimienta vetiver",
       imagen: "assets/images/Sauvage.webp",
-      precioDesde: 185,
+      precioDesde: 180,
       notas: "Bergamota, pimienta, vetiver y ambroxan.",
       sensacion: "Fresco, salvaje y magnético.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
-        { size: "10 ml", valor: 185 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -224,13 +224,13 @@ window.PERFUMES_DATA = {
       nombre: "Scandal Le Parfum Intense",
       dataNombre: "scandal le parfum intense jean paul gaultier tonka sándalo cuero",
       imagen: "assets/images/ScadalLeParfumIntense.webp",
-      precioDesde: 185,
+      precioDesde: 180,
       notas: "Tonka, sándalo, geranio y cuero.",
       sensacion: "Dulce, sensual, cálido y adictivo.",
       ocasiones: "Noches frías.",
       duracion: "6–8 horas",
       precios: [
-        { size: "10 ml", valor: 185 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -239,13 +239,13 @@ window.PERFUMES_DATA = {
       nombre: "Stronger With You Intensely",
       dataNombre: "emporio armani stronger with you intensely vainilla canela lavanda",
       imagen: "assets/images/StrongerWithYouIntensely.webp",
-      precioDesde: 215,
+      precioDesde: 200,
       notas: "Vainilla, canela, lavanda, pimienta rosa y ámbar.",
       sensacion: "Dulce gourmand y cálido.",
       ocasiones: "Noches cálidas y tardes frescas.",
       duracion: "8 horas",
       precios: [
-        { size: "10 ml", valor: 215 }
+        { size: "10 ml", valor: 200 }
       ]
     },
     {
@@ -254,13 +254,13 @@ window.PERFUMES_DATA = {
       nombre: "Uomo Born In Roma Intense",
       dataNombre: "valentino uomo born in roma intense vainilla lavanda",
       imagen: "assets/images/UomoBornInRomaIntense.webp",
-      precioDesde: 255,
+      precioDesde: 240,
       notas: "Vainilla, lavanda, grosella y vetiver.",
       sensacion: "Dulzón, cremoso y cálido.",
       ocasiones: "Eventos y salidas nocturnas.",
       duracion: "8 horas",
       precios: [
-        { size: "10 ml", valor: 255 }
+        { size: "10 ml", valor: 240 }
       ]
     },
     {
@@ -300,8 +300,8 @@ window.PERFUMES_DATA = {
       marca: "Armaf",
       nombre: "Yum Yum",
       dataNombre: "armaf yum yum cerezas bayas silvestres vainilla rosas almizcle",
-      imagen: "assets/images/YumYum.webp",
-      precioDesde: 115,
+      imagen: "assets/images/armafYumYum.webp",
+      precioDesde: 110,
       notas: "Cerezas, bayas silvestres, vainilla, rosas y almizcle.",
       sensacion: "Dulce afrutado — femenino y encantador ✨",
       ocasiones: "Perfecto para la noche.",
@@ -309,7 +309,7 @@ window.PERFUMES_DATA = {
       esDestacado: true,
       badgeTexto: "✦ Destacado del Mes",
       precios: [
-        { size: "10 ml", valor: 115 }
+        { size: "10 ml", valor: 110 }
       ]
     },
     {
