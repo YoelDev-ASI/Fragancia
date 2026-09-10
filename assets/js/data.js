@@ -14,12 +14,13 @@ window.PERFUMES_DATA = {
       nombre: "9PM Clásico",
       dataNombre: "afnan 9pm clásico manzana canela vainilla lavanda bergamota",
       imagen: "assets/images/9PMClasico.webp",
-      precioDesde: 100,
+      precioDesde: 55,
       notas: "Manzana verde, canela, vainilla, lavanda y bergamota.",
       sensacion: "Dulce y frutal.",
       ocasiones: "Noches.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 55 },
         { size: "10 ml", valor: 100 }
       ]
     },
@@ -29,12 +30,13 @@ window.PERFUMES_DATA = {
       nombre: "9PM Rebel",
       dataNombre: "afnan 9pm rebel piña manzana verde naranja vainilla",
       imagen: "assets/images/9PMRebel.webp",
-      precioDesde: 100,
+      precioDesde: 55,
       notas: "Piña, manzana verde, naranja y vainilla.",
       sensacion: "Dulce e intenso.",
       ocasiones: "Salidas nocturnas.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 55 },
         { size: "10 ml", valor: 100 }
       ]
     },
@@ -44,12 +46,13 @@ window.PERFUMES_DATA = {
       nombre: "Amber Oud Gold Edition",
       dataNombre: "al haramain amber oud gold edition melón piña vainilla",
       imagen: "assets/images/AmberOudGoldEdition.webp",
-      precioDesde: 115,
+      precioDesde: 60,
       notas: "Melón, piña, vainilla, bergamota y almizcle.",
       sensacion: "Dulce-frutal y jugoso.",
       ocasiones: "Día, tarde y noche.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 60 },
         { size: "10 ml", valor: 115 }
       ]
     },
@@ -59,12 +62,13 @@ window.PERFUMES_DATA = {
       nombre: "Aqua Dubai",
       dataNombre: "al haramain aqua dubai bergamota mandarina melón ámbar",
       imagen: "assets/images/AquaDubai.webp",
-      precioDesde: 115,
+      precioDesde: 60,
       notas: "Bergamota, mandarina, melón y ámbar.",
       sensacion: "Fresco, limpio y jabonoso.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 60 },
         { size: "10 ml", valor: 115 }
       ]
     },
@@ -74,12 +78,13 @@ window.PERFUMES_DATA = {
       nombre: "Eros Eau De Toilette",
       dataNombre: "versace eros eau de toilette menta manzana limón",
       imagen: "assets/images/ErosEauDeToilette.webp",
-      precioDesde: 145,
+      precioDesde: 85,
       notas: "Menta, manzana verde, limón, vainilla y cedro.",
       sensacion: "Fresco, masculino y seductor.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 85 },
         { size: "10 ml", valor: 145 }
       ]
     },
@@ -89,12 +94,13 @@ window.PERFUMES_DATA = {
       nombre: "Fakhar Black",
       dataNombre: "lattafa fakhar black manzana jengibre canela lavanda tonka",
       imagen: "assets/images/FakharBlack.webp",
-      precioDesde: 100,
+      precioDesde: 50,
       notas: "Manzana, jengibre, canela, lavanda y haba tonka.",
       sensacion: "Limpio, fresco y juvenil.",
       ocasiones: "Versátil.",
       duracion: "5–6 horas",
       precios: [
+        { size: "5 ml", valor: 50 },
         { size: "10 ml", valor: 100 }
       ]
     },
@@ -104,12 +110,13 @@ window.PERFUMES_DATA = {
       nombre: "Hawas Fire",
       dataNombre: "rasasi hawas fire salvia ámbar jazmín",
       imagen: "assets/images/Hawasfire.webp",
-      precioDesde: 110,
+      precioDesde: 60,
       notas: "Salvia esclarea, ámbar y jazmín.",
       sensacion: "Cálido, atractivo y adictivo.",
       ocasiones: "Tardes y noches frescas.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 60 },
         { size: "10 ml", valor: 110 }
       ]
     },
@@ -119,12 +126,13 @@ window.PERFUMES_DATA = {
       nombre: "Hawas Ice",
       dataNombre: "rasasi hawas ice limón bergamota ciruela manzana",
       imagen: "assets/images/HawasIce.webp",
-      precioDesde: 115,
+      precioDesde: 60,
       notas: "Limón italiano, bergamota, ciruela y manzana.",
       sensacion: "Frescura cítrica y limpia.",
       ocasiones: "Día a día y climas cálidos.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 60 },
         { size: "10 ml", valor: 115 }
       ]
     },
@@ -134,12 +142,13 @@ window.PERFUMES_DATA = {
       nombre: "Khamrah Clásico",
       dataNombre: "lattafa khamrah canela vainilla dátiles tonka nuez",
       imagen: "assets/images/KhamrahClasico.webp",
-      precioDesde: 100,
+      precioDesde: 55,
       notas: "Canela, vainilla, dátiles, haba tonka y nuez moscada.",
       sensacion: "Dulce gourmand invasivo y acalorado.",
       ocasiones: "Noches y climas fríos.",
       duracion: "+10 horas",
       precios: [
+        { size: "5 ml", valor: 55 },
         { size: "10 ml", valor: 100 }
       ]
     },
@@ -149,12 +158,13 @@ window.PERFUMES_DATA = {
       nombre: "Le Beau Le Parfum",
       dataNombre: "le beau le parfum jean paul gaultier vainilla coco piña",
       imagen: "assets/images/LeBeauLeParfum.webp",
-      precioDesde: 170,
+      precioDesde: 90,
       notas: "Vainilla, coco, piña y maderas.",
       sensacion: "Dulce, cálido y atractivo.",
       ocasiones: "Salidas casuales.",
       duracion: "8–10 horas",
       precios: [
+        { size: "5 ml", valor: 90 },
         { size: "10 ml", valor: 170 }
       ]
     },
@@ -164,12 +174,13 @@ window.PERFUMES_DATA = {
       nombre: "Le Male Elixir",
       dataNombre: "le male elixir jean paul gaultier vainilla lavanda",
       imagen: "assets/images/LeMaleElixir.webp",
-      precioDesde: 185,
+      precioDesde: 100,
       notas: "Vainilla, lavanda, menta, miel y tabaco.",
       sensacion: "Sensual, cálida y adictiva.",
       ocasiones: "Salidas nocturnas.",
       duracion: "8–10 horas",
       precios: [
+        { size: "5 ml", valor: 100 },
         { size: "10 ml", valor: 185 }
       ]
     },
@@ -179,12 +190,13 @@ window.PERFUMES_DATA = {
       nombre: "MYSLF",
       dataNombre: "ysl myslf yves saint laurent bergamota azahar pachuli",
       imagen: "assets/images/MYSLF.webp",
-      precioDesde: 190,
+      precioDesde: 100,
       notas: "Bergamota, azahar y pachuli.",
       sensacion: "Limpio, juvenil y agradable.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 100 },
         { size: "10 ml", valor: 190 }
       ]
     },
@@ -194,12 +206,13 @@ window.PERFUMES_DATA = {
       nombre: "Odyssey Mandarin Sky",
       dataNombre: "armaf odyssey mandarin sky mandarina naranja azafrán caramelo",
       imagen: "assets/images/OdysseyMandarinSky.webp",
-      precioDesde: 115,
+      precioDesde: 60,
       notas: "Mandarina, naranja, azafrán y caramelo.",
       sensacion: "Caramelo cítrico.",
       ocasiones: "Salidas casuales.",
       duracion: "8 horas",
       precios: [
+        { size: "5 ml", valor: 60 },
         { size: "10 ml", valor: 115 }
       ]
     },
@@ -209,12 +222,13 @@ window.PERFUMES_DATA = {
       nombre: "Sauvage",
       dataNombre: "dior sauvage bergamota pimienta vetiver",
       imagen: "assets/images/Sauvage.webp",
-      precioDesde: 185,
+      precioDesde: 100,
       notas: "Bergamota, pimienta, vetiver y ambroxan.",
       sensacion: "Fresco, salvaje y magnético.",
       ocasiones: "Versátil.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 100 },
         { size: "10 ml", valor: 185 }
       ]
     },
@@ -224,12 +238,13 @@ window.PERFUMES_DATA = {
       nombre: "Scandal Le Parfum Intense",
       dataNombre: "scandal le parfum intense jean paul gaultier tonka sándalo cuero",
       imagen: "assets/images/ScadalLeParfumIntense.webp",
-      precioDesde: 185,
+      precioDesde: 100,
       notas: "Tonka, sándalo, geranio y cuero.",
       sensacion: "Dulce, sensual, cálido y adictivo.",
       ocasiones: "Noches frías.",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 100 },
         { size: "10 ml", valor: 185 }
       ]
     },
@@ -239,12 +254,13 @@ window.PERFUMES_DATA = {
       nombre: "Stronger With You Intensely",
       dataNombre: "emporio armani stronger with you intensely vainilla canela lavanda",
       imagen: "assets/images/StrongerWithYouIntensely.webp",
-      precioDesde: 215,
+      precioDesde: 110,
       notas: "Vainilla, canela, lavanda, pimienta rosa y ámbar.",
       sensacion: "Dulce gourmand y cálido.",
       ocasiones: "Noches cálidas y tardes frescas.",
       duracion: "8 horas",
       precios: [
+        { size: "5 ml", valor: 110 },
         { size: "10 ml", valor: 215 }
       ]
     },
@@ -254,12 +270,13 @@ window.PERFUMES_DATA = {
       nombre: "Uomo Born In Roma Intense",
       dataNombre: "valentino uomo born in roma intense vainilla lavanda",
       imagen: "assets/images/UomoBornInRomaIntense.webp",
-      precioDesde: 255,
+      precioDesde: 130,
       notas: "Vainilla, lavanda, grosella y vetiver.",
       sensacion: "Dulzón, cremoso y cálido.",
       ocasiones: "Eventos y salidas nocturnas.",
       duracion: "8 horas",
       precios: [
+        { size: "5 ml", valor: 130 },
         { size: "10 ml", valor: 255 }
       ]
     },
@@ -269,12 +286,13 @@ window.PERFUMES_DATA = {
       nombre: "Tropical Vibe",
       dataNombre: "rayhaan tropical vibe mango piña bergamota coco dulzon frutal",
       imagen: "assets/images/Rayhaan.webp",
-      precioDesde: 100,
+      precioDesde: 55,
       notas: "Mango, Piña, Bergamota, Coco.",
       sensacion: "Dulzón frutal",
       ocasiones: "Salidas casuales",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 55 },
         { size: "10 ml", valor: 100 }
       ]
     },
@@ -284,12 +302,13 @@ window.PERFUMES_DATA = {
       nombre: "Club de Nuit Intense Man",
       dataNombre: "armaf club de nuit intense man limon bergamota piña grosellas manzana verde muy masculino",
       imagen: "assets/images/armafMan.webp",
-      precioDesde: 100,
+      precioDesde: 55,
       notas: "Limón, Bergamota, piña, grosellas, manzana verde.",
       sensacion: "Muy masculino",
       ocasiones: "Salidas nocturnas",
       duracion: "8 horas",
       precios: [
+        { size: "5 ml", valor: 55 },
         { size: "10 ml", valor: 100 }
       ]
     }
@@ -301,7 +320,7 @@ window.PERFUMES_DATA = {
       nombre: "Yum Yum",
       dataNombre: "armaf yum yum cerezas bayas silvestres vainilla rosas almizcle",
       imagen: "assets/images/YumYum.webp",
-      precioDesde: 115,
+      precioDesde: 60,
       notas: "Cerezas, bayas silvestres, vainilla, rosas y almizcle.",
       sensacion: "Dulce afrutado — femenino y encantador ✨",
       ocasiones: "Perfecto para la noche.",
@@ -309,6 +328,7 @@ window.PERFUMES_DATA = {
       esDestacado: true,
       badgeTexto: "✦ Destacado del Mes",
       precios: [
+        { size: "5 ml", valor: 60 },
         { size: "10 ml", valor: 115 }
       ]
     },
@@ -318,12 +338,13 @@ window.PERFUMES_DATA = {
       nombre: "Éclaire",
       dataNombre: "lattafa eclaire caramelo leche azúcar miel vainilla praline comestible provocador",
       imagen: "assets/images/lattafa.webp",
-      precioDesde: 100,
+      precioDesde: 55,
       notas: "Caramelo, Leche, Azúcar, miel, Vainilla, Praline.",
       sensacion: "Comestible, provocador.",
       ocasiones: "Salidas casuales",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 55 },
         { size: "10 ml", valor: 100 }
       ]
     },
@@ -333,12 +354,13 @@ window.PERFUMES_DATA = {
       nombre: "Odyssey Candee",
       dataNombre: "armaf odyssey candee fresa frambuesa bergamota durazno muy femenina",
       imagen: "assets/images/Armaf.webp",
-      precioDesde: 100,
+      precioDesde: 55,
       notas: "Fresa, Frambuesa, Bergamota, durazno.",
       sensacion: "Muy femenina",
       ocasiones: "Salidas casuales",
       duracion: "6–8 horas",
       precios: [
+        { size: "5 ml", valor: 55 },
         { size: "10 ml", valor: 100 }
       ]
     },
@@ -348,12 +370,13 @@ window.PERFUMES_DATA = {
       nombre: "La Bomba",
       dataNombre: "carolina herrera la bomba pitahaya vainilla frangipani pachuli peonia adictiva enérgica",
       imagen: "assets/images/CarolinaHerrera.webp",
-      precioDesde: 200,
+      precioDesde: 110,
       notas: "Pitahaya, Vainilla, Frangipani, Pachuli, peonia",
       sensacion: "Adictiva y enérgica.",
       ocasiones: "Ocasiones especiales.",
       duracion: "8–10 horas",
       precios: [
+        { size: "5 ml", valor: 110 },
         { size: "10 ml", valor: 200 }
       ]
     },
@@ -363,12 +386,13 @@ window.PERFUMES_DATA = {
       nombre: "Hawas Diva",
       dataNombre: "rasasi hawas diva frutos rojos vainilla ruibardo lichi rosas sensual cálida adictiva",
       imagen: "assets/images/Rasasi.webp",
-      precioDesde: 110,
+      precioDesde: 60,
       notas: "Frutos rojos, Vainilla, Ruibardo, lichi y rosas",
       sensacion: "Sensual, Cálida y adictiva",
       ocasiones: "Salidas casuales",
       duracion: "8–10 horas",
       precios: [
+        { size: "5 ml", valor: 60 },
         { size: "10 ml", valor: 110 }
       ]
     }

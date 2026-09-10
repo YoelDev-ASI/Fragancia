@@ -87,9 +87,29 @@ function renderAllSections() {
     // Buscar destacado del mes
     const destacado = data.damas.find(p => p.esDestacado);
     if (destacado) {
-      const waText = encodeURIComponent(`Hola, estoy interesado en el decant de 10ml de ${destacado.marca} ${destacado.nombre}`);
+      const waText = encodeURIComponent(`Hola, estoy interesado en el decant de ${destacado.marca} ${destacado.nombre}`);
       const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
       
+      const destacadoPreciosHTML = (destacado.precios && destacado.precios.length > 1) ? `
+        <div class="destacado-precios-grid">
+          ${destacado.precios.map(p => `
+            <div class="destacado-precio-item">
+              <span class="destacado-precio-tag">DECANT ${p.size.toUpperCase()}</span>
+              <div class="destacado-precio-val">
+                ${p.valor} <small>Bs</small>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      ` : `
+        <div class="destacado-precio-10ml-box">
+          <span class="destacado-10ml-tag">DECANT 10 ML</span>
+          <div class="destacado-10ml-val">
+            ${destacado.precioDesde} <small>Bs</small>
+          </div>
+        </div>
+      `;
+
       damasHTML += `
         <section class="destacado-perfume" style="padding-top: 40px;">
           <div class="destacado-inner">
@@ -104,12 +124,7 @@ function renderAllSections() {
                 <em>${destacado.nombre}</em>
               </h2>
               
-              <div class="destacado-precio-10ml-box">
-                <span class="destacado-10ml-tag">DECANT 10 ML</span>
-                <div class="destacado-10ml-val">
-                  ${destacado.precioDesde} <small>Bs</small>
-                </div>
-              </div>
+              ${destacadoPreciosHTML}
 
               <div class="destacado-sep"></div>
               <p class="destacado-item"><strong>Notas:</strong> ${destacado.notas}</p>
@@ -117,9 +132,9 @@ function renderAllSections() {
               <p class="destacado-item"><strong>Ocasiones:</strong> ${destacado.ocasiones}</p>
               <p class="destacado-item"><strong>Duración:</strong> ${destacado.duracion}</p>
               
-              <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener" style="max-width:220px; margin-top:24px;">
+              <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener" style="max-width:240px; margin-top:24px;">
                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.115 1.535 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.725-1.5A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.157-1.42l-.369-.218-3.4.892.907-3.312-.24-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-                Pedir 10ml por WhatsApp
+                Pedir Decant por WhatsApp
               </a>
             </div>
           </div>
@@ -274,9 +289,37 @@ function createComboCardHTML(combo) {
 }
 
 function createCardHTML(perfume) {
-  const precio10ml = perfume.precios && perfume.precios[0] ? perfume.precios[0].valor : perfume.precioDesde;
-  const waText = encodeURIComponent(`Hola, estoy interesado en el decant de 10ml de ${perfume.marca} ${perfume.nombre}`);
+  const waText = encodeURIComponent(`Hola, estoy interesado en el decant de ${perfume.marca} ${perfume.nombre}`);
   const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
+
+  let preciosHTML = '';
+  if (perfume.precios && perfume.precios.length > 1) {
+    preciosHTML = `
+      <div class="card-precios-grid">
+        ${perfume.precios.map(p => `
+          <div class="card-precio-item-multi">
+            <span class="precio-tag-multi"><span class="decant-palabra">DECANT </span>${p.size.toUpperCase()}</span>
+            <div class="precio-val-multi">
+              <span class="monto">${p.valor}</span>
+              <span class="moneda">Bs</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else {
+    const precioUnico = perfume.precios && perfume.precios[0] ? perfume.precios[0].valor : perfume.precioDesde;
+    const tagUnico = perfume.precios && perfume.precios[0] ? `DECANT ${perfume.precios[0].size.toUpperCase()}` : 'DECANT 10 ML';
+    preciosHTML = `
+      <div class="card-precio-10ml">
+        <span class="precio-10ml-tag">${tagUnico}</span>
+        <div class="precio-10ml-val">
+          <span class="monto">${precioUnico}</span>
+          <span class="moneda">Bs</span>
+        </div>
+      </div>
+    `;
+  }
 
   return `
     <div class="card" data-nombre="${perfume.dataNombre}">
@@ -288,13 +331,7 @@ function createCardHTML(perfume) {
         <span class="card-marca">${perfume.marca}</span>
         <h3 class="card-nombre">${perfume.nombre}</h3>
 
-        <div class="card-precio-10ml">
-          <span class="precio-10ml-tag">DECANT 10 ML</span>
-          <div class="precio-10ml-val">
-            <span class="monto">${precio10ml}</span>
-            <span class="moneda">Bs</span>
-          </div>
-        </div>
+        ${preciosHTML}
 
         <div class="card-divider"></div>
         <div class="card-detalles">
@@ -308,7 +345,7 @@ function createCardHTML(perfume) {
         </span>
         <a href="${waUrl}" class="btn-whatsapp" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.115 1.535 5.845L.057 23.428a.5.5 0 0 0 .515.572l5.725-1.5A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.157-1.42l-.369-.218-3.4.892.907-3.312-.24-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Pedir 10ml por WhatsApp
+          Pedir Decant por WhatsApp
         </a>
       </div>
     </div>
@@ -463,17 +500,34 @@ function openDetailModal(perfume) {
   const modalContenido = document.getElementById("modal-detalle-contenido");
   if (!modal || !modalContenido) return;
 
-  const precioActual = perfume.precioCombo || (perfume.precios && perfume.precios[0] ? perfume.precios[0].valor : perfume.precioDesde);
-  const precioAnteriorHTML = perfume.precioOriginal ? `<span class="modal-precio-tachado">Bs ${perfume.precioOriginal}</span>` : '';
-  const modalPreciosHTML = `
-    <div class="modal-precio-10ml-box">
-      <span class="modal-precio-10ml-label">${perfume.incluye ? "PRECIO COMBO PROMO" : "PRESENTACIÓN 10 ML"}</span>
-      <div class="modal-precio-10ml-val">
-        ${precioAnteriorHTML}
-        ${precioActual} <small>Bs</small>
+  let modalPreciosHTML = '';
+  if (perfume.precios && perfume.precios.length > 1) {
+    modalPreciosHTML = `
+      <div class="modal-precios-grid">
+        ${perfume.precios.map(p => `
+          <div class="modal-precio-box">
+            <span class="modal-precio-label">DECANT ${p.size.toUpperCase()}</span>
+            <div class="modal-precio-val">
+              ${p.valor} <small>Bs</small>
+            </div>
+          </div>
+        `).join('')}
       </div>
-    </div>
-  `;
+    `;
+  } else {
+    const precioActual = perfume.precioCombo || (perfume.precios && perfume.precios[0] ? perfume.precios[0].valor : perfume.precioDesde);
+    const precioAnteriorHTML = perfume.precioOriginal ? `<span class="modal-precio-tachado">Bs ${perfume.precioOriginal}</span>` : '';
+    const labelSingle = perfume.incluye ? "PRECIO COMBO PROMO" : (perfume.precios && perfume.precios[0] ? `DECANT ${perfume.precios[0].size.toUpperCase()}` : "DECANT 10 ML");
+    modalPreciosHTML = `
+      <div class="modal-precio-10ml-box">
+        <span class="modal-precio-10ml-label">${labelSingle}</span>
+        <div class="modal-precio-10ml-val">
+          ${precioAnteriorHTML}
+          ${precioActual} <small>Bs</small>
+        </div>
+      </div>
+    `;
+  }
 
   const waText = encodeURIComponent(`Hola, estoy interesado en consultar sobre ${perfume.nombre}`);
   const waUrl = `https://wa.me/${window.CONFIG.telefonoWhatsApp}?text=${waText}`;
