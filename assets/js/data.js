@@ -53,7 +53,7 @@ window.PERFUMES_DATA = {
       duracion: "6–8 horas",
       precios: [
         { size: "5 ml", valor: 60 },
-        { size: "10 ml", valor: 115 }
+        { size: "10 ml", valor: 110 }
       ]
     },
     {
@@ -69,7 +69,7 @@ window.PERFUMES_DATA = {
       duracion: "6–8 horas",
       precios: [
         { size: "5 ml", valor: 60 },
-        { size: "10 ml", valor: 115 }
+        { size: "10 ml", valor: 110 }
       ]
     },
     {
@@ -85,7 +85,7 @@ window.PERFUMES_DATA = {
       duracion: "6–8 horas",
       precios: [
         { size: "5 ml", valor: 85 },
-        { size: "10 ml", valor: 145 }
+        { size: "10 ml", valor: 150 }
       ]
     },
     {
@@ -165,7 +165,7 @@ window.PERFUMES_DATA = {
       duracion: "8–10 horas",
       precios: [
         { size: "5 ml", valor: 90 },
-        { size: "10 ml", valor: 170 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -181,7 +181,7 @@ window.PERFUMES_DATA = {
       duracion: "8–10 horas",
       precios: [
         { size: "5 ml", valor: 100 },
-        { size: "10 ml", valor: 185 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -197,7 +197,7 @@ window.PERFUMES_DATA = {
       duracion: "6–8 horas",
       precios: [
         { size: "5 ml", valor: 100 },
-        { size: "10 ml", valor: 190 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -213,7 +213,7 @@ window.PERFUMES_DATA = {
       duracion: "8 horas",
       precios: [
         { size: "5 ml", valor: 60 },
-        { size: "10 ml", valor: 115 }
+        { size: "10 ml", valor: 100 }
       ]
     },
     {
@@ -229,7 +229,7 @@ window.PERFUMES_DATA = {
       duracion: "6–8 horas",
       precios: [
         { size: "5 ml", valor: 100 },
-        { size: "10 ml", valor: 185 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -245,7 +245,7 @@ window.PERFUMES_DATA = {
       duracion: "6–8 horas",
       precios: [
         { size: "5 ml", valor: 100 },
-        { size: "10 ml", valor: 185 }
+        { size: "10 ml", valor: 180 }
       ]
     },
     {
@@ -261,7 +261,7 @@ window.PERFUMES_DATA = {
       duracion: "8 horas",
       precios: [
         { size: "5 ml", valor: 110 },
-        { size: "10 ml", valor: 215 }
+        { size: "10 ml", valor: 200 }
       ]
     },
     {
@@ -277,7 +277,7 @@ window.PERFUMES_DATA = {
       duracion: "8 horas",
       precios: [
         { size: "5 ml", valor: 130 },
-        { size: "10 ml", valor: 255 }
+        { size: "10 ml", valor: 240 }
       ]
     },
     {
@@ -319,7 +319,7 @@ window.PERFUMES_DATA = {
       marca: "Armaf",
       nombre: "Yum Yum",
       dataNombre: "armaf yum yum cerezas bayas silvestres vainilla rosas almizcle",
-      imagen: "assets/images/YumYum.webp",
+      imagen: "assets/images/armafyumyum.webp",
       precioDesde: 60,
       notas: "Cerezas, bayas silvestres, vainilla, rosas y almizcle.",
       sensacion: "Dulce afrutado — femenino y encantador ✨",
@@ -329,7 +329,7 @@ window.PERFUMES_DATA = {
       badgeTexto: "✦ Destacado del Mes",
       precios: [
         { size: "5 ml", valor: 60 },
-        { size: "10 ml", valor: 115 }
+        { size: "10 ml", valor: 110 }
       ]
     },
     {
